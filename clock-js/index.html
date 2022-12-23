@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5bfb799d1c.js" crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital-clock</title>
+    <link rel="shortcut icon" href="./clock.png" type="image/x-icon">
+
+    <style>
+        body {
+            background-color: #120d20;
+            overflow-x: hidden;
+        }
+
+        .time {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 15px;
+            background-image: linear-gradient(rgb(15, 15, 59, 0.5), rgb(15, 15, 59, 0.5)), url(./aron-visuals-BXOXnQ26B7o-unsplash.jpg);
+            background-size: cover;
+            background-position: right;
+            background-repeat: no-repeat;
+
+        }
+
+        .title h1 {
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 40px;
+        }
+
+        .title p {
+            margin: 0;
+            font-size: 20px;
+            color: rgb(255, 242, 0);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 800;
+        }
+
+
+
+        @font-face {
+            font-family: 'digital-clock-font';
+            src: url('put_the_location_to_your_font.ttf or .otf');
+        }
+
+        #demo {
+            background-color: rgb(0, 0, 0);
+            padding: 20px 40px;
+            color: rgb(79, 255, 79);
+            border-radius: 15px;
+            /* font-family: 'Chivo Mono', monospace; */
+            font-size: 28px;
+            box-shadow: 0 0 20px 1px rgba(14, 255, 14, 0.8);
+        }
+
+
+        #clockContainer {
+            position: relative;
+            /* margin: auto; */
+            height: 350px;
+            /*to make the height and width responsive*/
+            width: 350px;
+            background: url(https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg) no-repeat;
+            /*setting our background image*/
+            background-size: 100%;
+            border-radius: 50%;
+            filter: drop-shadow(5px 10px 20px rgb(0, 0, 0));
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            background: black;
+            border-radius: 10px;
+            transform-origin: bottom;
+        }
+
+        #hour {
+            width: 1.8%;
+            height: 25%;
+            top: 25%;
+            left: 48.85%;
+            opacity: 0.8;
+        }
+
+        #minute {
+            width: 1.6%;
+            height: 30%;
+            top: 19%;
+            left: 48.9%;
+            opacity: 0.8;
+        }
+
+        #second {
+            width: 1%;
+            height: 40%;
+            top: 9%;
+            left: 49.25%;
+            opacity: 0.8;
+        }
+
+
+        @media (max-width:500px) {
+            #clockContainer {
+                width: 290px;
+                height: 290px;
+            }
+        }
+
+        @media (max-width:320px) {
+            #clockContainer {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<div class="time">
+    <div class="title">
+
+        <h1><i class="fa-solid fa-clock" style="color: rgb(0, 255, 38);font-size: 50px;"></i> Digital and Analog clock
+        </h1>
+        <p>"Time is the wisest counselor of all."</p>
+    </div>
+    <p id="demo"></p>
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+</div>
+
+<body>
+    <script>
+        // const element = document.getElementById("demo");
+        // // setInterval(function () { element.innerHTML += Date() }, 1000);
+        const myInterval = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            const date = new Date();
+            document.getElementById("demo").innerHTML = date.toLocaleTimeString();
+
+        }
+
+
+        setInterval(() => {
+            d = new Date(); //object of date()
+            hr = d.getHours();
+            min = d.getMinutes();
+            sec = d.getSeconds();
+            hr_rotation = 30 * hr + min / 2; //converting current time
+            min_rotation = 6 * min;
+            sec_rotation = 6 * sec;
+
+            hour.style.transform = `rotate(${hr_rotation}deg)`;
+            minute.style.transform = `rotate(${min_rotation}deg)`;
+            second.style.transform = `rotate(${sec_rotation}deg)`;
+        }, 1000);
+    </script>
+</body>
+
+</html>
